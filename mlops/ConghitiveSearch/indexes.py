@@ -7,7 +7,7 @@ admin_key = "fok2jLVK4MdHuem78RTDd5jmWMaR..."  # Clé API administrateur pour Az
 
 # Définition de l'index en JSON
 index_definition = {
-    "name": "kebe-index",
+    "name": "documents-index",
     "fields": [
         {
             "name": "id",
@@ -16,7 +16,7 @@ index_definition = {
             "filterable": False,
             "sortable": False,
             "facetable": False
-            
+
         },
         {
             "name": "content",
