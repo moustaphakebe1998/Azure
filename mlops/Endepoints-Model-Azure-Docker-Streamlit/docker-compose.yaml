@@ -1,0 +1,23 @@
+version: '3.8'  # Utilise la version souhaitée
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: app_compose:latest 
+    ports:
+      - "8503:8503"  # Redirige le port 8503 du conteneur vers le port 8503 de l'hôte
+    environment:
+      - no_proxy=localhost,127.0.
+      - https_proxy=http://
+      - http_proxy=http://DMZ
+    volumes:
+      - ./app:/app/app  # Monte le dossier app
+      - ./requirements.txt:/app/requirements.txt  # Monte le fichier requirements.txt
+      - ./logs:/app/logs  # Monte le dossier logs pour les logs de l'application
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
